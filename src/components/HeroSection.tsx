@@ -71,7 +71,7 @@ export default function HeroSection() {
         }
       );
 
-      // Hover animation for the button (same as in CallToActionSection)
+      // Hover animation for the button
       buttonRef.current.addEventListener("mouseenter", () => {
         gsap.to(buttonRef.current, { scale: 1.1, duration: 0.3 });
       });
@@ -79,15 +79,10 @@ export default function HeroSection() {
         gsap.to(buttonRef.current, { scale: 1, duration: 0.3 });
       });
 
-      // Scroll to details section on button click
+      // Simple native scrolling to the details section on button click
       const onClick = () => {
-        gsap.to(window, {
-          scrollTo: {
-            y: "#laptop-details",
-            offsetY: 50,
-          },
-          duration: 1,
-          ease: "power3.inOut",
+        document.getElementById("laptop-details")?.scrollIntoView({
+          behavior: "smooth",
         });
       };
 
