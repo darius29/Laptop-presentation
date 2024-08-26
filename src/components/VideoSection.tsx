@@ -77,7 +77,7 @@ export default function VideoSection() {
             </p>
             <p className="text-lg text-gray-700 transition-colors duration-300 hover:text-gray-900">
               Watch the video to see the laptop in action and understand why
-              it's the best choice for professionals and gamers alike.
+              it&apos;s the best choice for professionals and gamers alike.
             </p>
           </div>
           <div
