@@ -39,6 +39,13 @@ export default function Header() {
           } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 absolute md:static bg-white md:bg-transparent w-full md:w-auto left-0 top-16 md:top-0 md:items-center text-lg`}>
           <li className="py-2 text-center md:px-2">
             <Link
+              href="#gallery"
+              className="block transition-colors duration-200 hover:text-blue-500">
+              Gallery
+            </Link>
+          </li>
+          <li className="py-2 text-center md:px-2">
+            <Link
               href="#features"
               className="block transition-colors duration-200 hover:text-blue-500">
               Features
@@ -58,13 +65,7 @@ export default function Header() {
               Performance
             </Link>
           </li>
-          <li className="py-2 text-center md:px-2">
-            <Link
-              href="#gallery"
-              className="block transition-colors duration-200 hover:text-blue-500">
-              Gallery
-            </Link>
-          </li>
+
           <li className="py-2 text-center md:px-2">
             <Link
               href="#video"
