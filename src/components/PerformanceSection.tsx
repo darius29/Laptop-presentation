@@ -96,7 +96,7 @@ export default function PerformanceSection() {
         />
         <p className="leading-relaxed text-gray-500">
           {selectedItem === 0
-            ? "Whether you're rendering high-resolution videos, running complex simulations, or simply multitasking, the CPU delivers a seamless experience. It is designed to handle the most demanding tasks with ease, ensuring you stay productive no matter what."
+            ? "Whether you&apos;re rendering high-resolution videos, running complex simulations, or simply multitasking, the CPU delivers a seamless experience. It is designed to handle the most demanding tasks with ease, ensuring you stay productive no matter what."
             : "Render complex graphics, enjoy ultra-smooth gaming, and handle demanding visual tasks effortlessly with the latest GPU technology. Perfect for both casual gamers and professional content creators who demand the best performance."}
         </p>
       </div>
