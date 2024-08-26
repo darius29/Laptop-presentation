@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LightningCursor from "./LightningCursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,6 +70,39 @@ export default function HeroSection() {
           delay: 0.6,
         }
       );
+
+      // Hover animation for the button (same as in CallToActionSection)
+      buttonRef.current.addEventListener("mouseenter", () => {
+        gsap.to(buttonRef.current, { scale: 1.1, duration: 0.3 });
+      });
+      buttonRef.current.addEventListener("mouseleave", () => {
+        gsap.to(buttonRef.current, { scale: 1, duration: 0.3 });
+      });
+
+      // Scroll to details section on button click
+      const onClick = () => {
+        gsap.to(window, {
+          scrollTo: {
+            y: "#laptop-details",
+            offsetY: 50,
+          },
+          duration: 1,
+          ease: "power3.inOut",
+        });
+      };
+
+      buttonRef.current.addEventListener("click", onClick);
+
+      return () => {
+        // Clean up event listeners
+        buttonRef.current?.removeEventListener("mouseenter", () => {
+          gsap.to(buttonRef.current, { scale: 1.1, duration: 0.3 });
+        });
+        buttonRef.current?.removeEventListener("mouseleave", () => {
+          gsap.to(buttonRef.current, { scale: 1, duration: 0.3 });
+        });
+        buttonRef.current?.removeEventListener("click", onClick);
+      };
     }
   }, []);
 
@@ -108,6 +142,7 @@ export default function HeroSection() {
           Learn More
         </button>
       </div>
+      <LightningCursor />
     </section>
   );
 }
