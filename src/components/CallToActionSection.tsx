@@ -42,7 +42,9 @@ export default function CallToActionSection() {
       className="py-20 bg-blue-600 text-white text-center">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold mb-6">Get Your Laptop Today</h2>
-        <p className="text-xl mb-8">Don't miss out on the latest technology.</p>
+        <p className="text-xl mb-8">
+          Don&apos;t miss out on the latest technology.
+        </p>
         <button
           ref={buttonRef}
           className="px-8 py-3 bg-white text-blue-600 rounded-full hover:bg-gray-100">

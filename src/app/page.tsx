@@ -6,14 +6,16 @@ import VideoSection from "../components/VideoSection";
 import CallToActionSection from "../components/CallToActionSection";
 import FooterSection from "../components/FooterSection";
 import Header from "@/components/Header";
+import LaptopDetailsSection from "@/components/LaptopDetailsSection";
 export default function HomePage() {
   return (
     <>
       <Header />
       <HeroSection />
-      <FeaturesSection />
-      <PerformanceSection />
       <GallerySection />
+      <FeaturesSection />
+      <LaptopDetailsSection />
+      <PerformanceSection />
       <VideoSection />
       <CallToActionSection />
       <FooterSection />

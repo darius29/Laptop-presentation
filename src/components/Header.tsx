@@ -1,9 +1,10 @@
+"use client";
 import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="fixed w-full bg-white shadow-lg z-50">
-      <nav className="container mx-auto flex justify-between items-center p-4">
+    <header className="fixed z-50 w-full bg-white shadow-lg">
+      <nav className="container flex items-center justify-between p-4 mx-auto">
         <div className="text-xl font-bold">
           <Link href="/">LaptopBrand</Link>
         </div>
