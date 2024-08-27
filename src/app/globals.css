@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 body {
   margin: 0;
   padding: 0;
@@ -78,21 +78,89 @@ section {
   height: 100vh;
   background: url("/images/hero-background.jpg") no-repeat center center/cover;
   overflow: hidden;
-}
+} */
 
-#background-overlay {
+/* #background-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Ensures the overlay doesn't block interactions */
+  pointer-events: none; 
   z-index: 1;
 }
 
 .content {
   position: relative;
-  z-index: 2; /* Above the background overlay */
+  z-index: 2;
   text-align: center;
   color: white;
+} */
+
+/* 
+
+
+
+*/
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(0, 0, 0);
+}
+
+.videoContainer {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.textMask {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    black 50%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    black 50%,
+    transparent 100%
+  );
+}
+
+.maskedText {
+  font-size: 10vw;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 1;
+  -webkit-mask-image: url("/images/rog_flow.mp4");
+  -webkit-mask-size: 200% 200%;
+  mask-image: url("/images/rog_flow.mp4");
+  mask-size: 200% 200%;
 }
