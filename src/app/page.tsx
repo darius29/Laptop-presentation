@@ -8,6 +8,7 @@ import FooterSection from "../components/FooterSection";
 import Header from "@/components/Header";
 import LaptopDetailsSection from "@/components/LaptopDetailsSection";
 import VideoAnimation from "@/components/VideoAnimation";
+import VideoTextMobile from "@/components/VideoTextMobile";
 
 export default function HomePage() {
   return (
@@ -17,7 +18,15 @@ export default function HomePage() {
       <GallerySection />
       <FeaturesSection />
       <LaptopDetailsSection />
-      <VideoAnimation />
+      {/* Afișează VideoAnimation pe desktop și ascunde pe mobile */}
+      <div className="hidden lg:flex">
+        <VideoAnimation />
+      </div>
+
+      {/* Afișează VideoTextMobile pe mobile și ascunde pe desktop */}
+      <div className="block lg:hidden">
+        <VideoTextMobile />
+      </div>
       <PerformanceSection />
       {/* <VideoSection /> */}
       <CallToActionSection />

@@ -62,23 +62,10 @@ const VideoAnimation = () => {
           className="relative w-full overflow-hidden bg-black">
           <h1
             ref={textRef}
+            className="absolute left-0 flex items-center justify-center w-full h-full font-bold text-white transform -translate-y-1/2 bg-black top-1/2 mix-blend-multiply user-select-none"
             style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              top: "50%", // Center vertically
-              left: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#000",
-              color: "#fff",
-              fontWeight: 700,
               fontSize: "300px",
               fontFamily: "sans-serif",
-              mixBlendMode: "multiply",
-              userSelect: "none",
-              transform: "translateY(-50%)", // Center text vertically with transform
             }}>
             ROGFLOW
           </h1>
@@ -87,12 +74,7 @@ const VideoAnimation = () => {
             muted
             loop
             playsInline
-            style={{
-              width: "100%",
-              height: "100%",
-              opacity: 1,
-              objectFit: "cover",
-            }}>
+            className="object-cover w-full h-full opacity-100">
             <source
               src="/images/rog_flow.mp4"
               type="video/mp4"
