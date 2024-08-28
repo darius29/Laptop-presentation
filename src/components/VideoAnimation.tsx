@@ -1,89 +1,108 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import styles from "./VideoAnimation.module.css";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const VideoAnimation = () => {
-  const containerRef = useRef(null);
-  const textRef = useRef(null);
-  const maskRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    if (containerRef.current && textRef.current && maskRef.current) {
-      // Set initial state for the text
-      gsap.set(textRef.current, { scale: 8, opacity: 1 });
+    const container = containerRef.current;
+    const text = textRef.current;
+    const video = videoRef.current;
 
-      // Pin and scrub the container
-      ScrollTrigger.create({
-        trigger: containerRef.current,
+    if (!container || !text || !video) return;
+
+    // Text animation timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
         start: "top top",
         end: "bottom top",
-        scrub: true,
+        scrub: true, // Synchronize with scroll speed
         pin: true,
-        onEnter: () => gsap.to(textRef.current, { scale: 8, opacity: 1 }), // Ensure text is large and visible on enter
-        onLeaveBack: () => gsap.to(textRef.current, { scale: 8, opacity: 1 }), // Reset to large size when scrolling back up
-      });
+      },
+    });
 
-      // Animate the text scaling and fading out
-      gsap.fromTo(
-        textRef.current,
-        { scale: 8, opacity: 1 },
-        {
-          scale: 1,
-          opacity: 0, // Fade out the text
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 80%",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
+    // Set initial state for text
+    gsap.set(text, { scale: 300, opacity: 1, yPercent: -50 });
 
-      // Animate the mask effect
-      gsap.to(maskRef.current, {
-        webkitMaskSize: "100% 100%",
-        maskSize: "100% 100%",
-        webkitMaskPosition: "center",
-        maskPosition: "center",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    }
+    // Animate text scale down on scroll
+    tl.to(text, {
+      scale: 1,
+      duration: 1,
+      ease: "power2.inOut",
+    });
+
+    // Play video initially
+    video.play();
+
+    // ScrollTrigger for video playback control
+    ScrollTrigger.create({
+      trigger: container,
+      start: "top top", // Start video playback immediately
+      onEnter: () => video.play(), // Ensure video plays when entering the trigger point
+      onLeaveBack: () => video.play(), // Pause video when scrolling back up
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className={styles.videoContainer}>
-      <video
-        autoPlay
-        loop
-        muted
-        className={styles.video}>
-        <source
-          src="/images/rog_flow.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
-      <div
-        className={styles.textMask}
-        ref={maskRef}>
+    <div className="overflow-x-hidden ">
+      <div className="h-[1000px] w-screen">
         <div
-          ref={textRef}
-          className={styles.maskedText}>
-          ROGFLOW
+          ref={containerRef}
+          className="relative w-full overflow-hidden bg-black">
+          <h1
+            ref={textRef}
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              top: "50%", // Center vertically
+              left: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#000",
+              color: "#fff",
+              fontWeight: 700,
+              fontSize: "300px",
+              fontFamily: "sans-serif",
+              mixBlendMode: "multiply",
+              userSelect: "none",
+              transform: "translateY(-50%)", // Center text vertically with transform
+            }}>
+            ROGFLOW
+          </h1>
+          <video
+            ref={videoRef}
+            muted
+            loop
+            playsInline
+            style={{
+              width: "100%",
+              height: "100%",
+              opacity: 1,
+              objectFit: "cover",
+            }}>
+            <source
+              src="/images/rog_flow.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
+
+      <div className="h-[980px] bg-white"></div>
     </div>
   );
 };

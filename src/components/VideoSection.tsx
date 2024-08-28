@@ -29,24 +29,24 @@ export default function VideoSection() {
       );
     }
 
-    if (videoContainerRef.current) {
-      gsap.fromTo(
-        videoContainerRef.current.querySelector("iframe"),
-        { scale: 0.8 },
-        {
-          scale: 1,
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: videoContainerRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: true,
-            toggleActions: "play reverse play reverse",
-          },
-        }
-      );
-    }
+    // if (videoContainerRef.current) {
+    //   gsap.fromTo(
+    //     videoContainerRef.current.querySelector("iframe"),
+    //     { scale: 0.8 },
+    //     {
+    //       scale: 1,
+    //       duration: 1.5,
+    //       ease: "power2.out",
+    //       scrollTrigger: {
+    //         trigger: videoContainerRef.current,
+    //         start: "top 80%",
+    //         end: "bottom 20%",
+    //         scrub: true,
+    //         toggleActions: "play reverse play reverse",
+    //       },
+    //     }
+    //   );
+    // }
   }, []);
 
   return (
